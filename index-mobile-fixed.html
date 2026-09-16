@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Priyanka Goswami — Data Science Student and Machine Learning Engineering Intern.">
+  <title>Priyanka Goswami — Data Science & ML</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    :root {
+      --bg: #05070d;
+      --bg-soft: #080b13;
+      --panel: rgba(12, 15, 25, .72);
+      --panel-strong: rgba(15, 18, 30, .9);
+      --text: #f4f6fb;
+      --muted: #9ca5b8;
+      --muted-2: #687286;
+      --line: rgba(255,255,255,.10);
+      --line-hover: rgba(160, 140, 255, .34);
+      --accent: #a78bfa;
+      --accent-2: #6ee7ff;
+      --accent-3: #c4b5fd;
+      --green: #70f2bd;
+      --glow: rgba(167,139,250,.28);
+      --max: 1240px;
+      --mono: "DM Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --sans: "Manrope", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(800px 500px at 78% 8%, rgba(110,231,255,.055), transparent 68%),
+        radial-gradient(850px 600px at 8% 35%, rgba(167,139,250,.065), transparent 68%),
+        var(--bg);
+      font-family: var(--sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 64px)); margin-inline: auto; }
+
+    /* ========================= NAV ========================= */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      background: rgba(5,7,13,.74);
+      backdrop-filter: blur(20px);
+    }
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(167,139,250,.55);
+      background: linear-gradient(145deg, rgba(167,139,250,.12), rgba(110,231,255,.05));
+      color: var(--accent-2);
+      box-shadow: 0 0 24px rgba(167,139,250,.10);
+    }
+    .brand-name { white-space: nowrap; text-shadow: 0 0 12px rgba(244,246,251,.10), 0 0 25px rgba(167,139,250,.14); }
+    .nav-links { display: flex; gap: 28px; font-size: 13px; color: var(--muted); }
+    .nav-links a { transition: color .2s ease; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ========================= PARTICLES ========================= */
+    .ambient-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      opacity: .72;
+    }
+
+    /* ========================= HERO ========================= */
+    .hero {
+      min-height: calc(100vh - 76px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(420px, .9fr);
+      align-items: center;
+      gap: 54px;
+      padding: 78px 0 90px;
+    }
+    .hero-copy { max-width: 780px; }
+    .eyebrow, .section-kicker {
+      color: var(--accent-2);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-shadow: 0 0 14px rgba(110,231,255,.22);
+    }
+    .hero h1 {
+      margin: 20px 0 28px;
+      max-width: 820px;
+      font-size: clamp(4rem, 8vw, 7.8rem);
+      line-height: .91;
+      letter-spacing: -.065em;
+    }
+    .hero h1 .soft {
+      color: var(--text);
+      text-shadow: 0 0 18px rgba(244,246,251,.10), 0 0 44px rgba(167,139,250,.08);
+    }
+    .hero h1 .accent {
+      color: transparent;
+      background: linear-gradient(100deg, #e8ddff 0%, var(--accent-3) 18%, var(--accent) 48%, var(--accent-2) 82%, #d9fbff 100%);
+      background-size: 180% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: 0 0 34px rgba(167,139,250,.28), 0 0 72px rgba(110,231,255,.16);
+      filter: drop-shadow(0 0 18px rgba(167,139,250,.18));
+      animation: title-shimmer 7s ease-in-out infinite;
+    }
+
+    /* Shiny gradient used on the main "Building useful intelligence." headline. */
+    @keyframes title-shimmer {
+      0%, 100% { background-position: 0% 50%; filter: drop-shadow(0 0 16px rgba(167,139,250,.16)); }
+      50% { background-position: 100% 50%; filter: drop-shadow(0 0 25px rgba(110,231,255,.22)); }
+    }
+    .hero-lead {
+      max-width: 700px;
+      margin: 0;
+      color: #b8c0d0;
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.75;
+    }
+    .hero-secondary {
+      max-width: 680px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 34px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 17px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.025);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); border-color: var(--line-hover); background: rgba(167,139,250,.07); }
+    .btn-primary {
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #080912;
+      box-shadow: 0 16px 40px rgba(167,139,250,.18);
+    }
+    .btn-primary:hover { border-color: transparent; background: linear-gradient(135deg, #b79cff, #82edff); }
+
+  
+
+    /* ========================= SECTION SHARED ========================= */
+    .section { padding: 118px 0; border-top: 1px solid rgba(255,255,255,.065); }
+    .section-heading { max-width: 900px; }
+    .section h2 {
+      margin: 14px 0 18px;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: .98;
+      letter-spacing: -.06em;
+      text-shadow: 0 0 22px rgba(244,246,251,.12), 0 0 46px rgba(167,139,250,.14), 0 0 82px rgba(110,231,255,.06);
+    }
+    .section h2 span[style*="--accent"] {
+      color: transparent !important;
+      background: linear-gradient(100deg, #e8ddff 0%, var(--accent) 45%, var(--accent-2) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: none;
+      filter: drop-shadow(0 0 13px rgba(167,139,250,.24)) drop-shadow(0 0 30px rgba(110,231,255,.10));
+    }
+    .section-kicker {
+      text-shadow: 0 0 10px rgba(110,231,255,.30), 0 0 24px rgba(167,139,250,.18);
+    }
+    .section-sub { max-width: 760px; color: var(--muted); font-size: 17px; line-height: 1.85; }
+
+    /* ========================= ABOUT ========================= */
+    .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 72px; align-items: start; margin-top: 54px; }
+    .about-copy p { color: #aeb7c7; font-size: 17px; line-height: 1.85; margin: 0 0 24px; }
+    .about-copy strong { color: var(--accent-2); font-weight: 600; }
+    .status-card {
+      border: 1px solid rgba(167,139,250,.24);
+      border-radius: 26px;
+      padding: 25px 30px;
+      background: linear-gradient(145deg, rgba(167,139,250,.065), rgba(110,231,255,.025));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 20px 80px rgba(0,0,0,.16);
+    }
+    .status-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 17px 0; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .status-row:last-child { border-bottom: 0; }
+    .status-label { color: var(--muted); }
+    .status-value { color: #e8ebf3; font-weight: 700; text-align: right; }
+    .status-dot { display: inline-block; width: 8px; height: 8px; margin-right: 9px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 12px rgba(110,231,255,.8); }
+
+    /* ========================= WORK / 3 x 2 GLASS CARDS ========================= */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 52px;
+    }
+    .work-card {
+      min-height: 330px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 27px;
+      border: 1px solid rgba(255,255,255,.105);
+      border-radius: 25px;
+      background: linear-gradient(145deg, rgba(255,255,255,.052), rgba(255,255,255,.014));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.035), 0 20px 70px rgba(0,0,0,.13);
+      backdrop-filter: blur(14px);
+      transition: transform .28s ease, border-color .28s ease, background .28s ease, box-shadow .28s ease;
+    }
+    .work-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(196,181,253,.28);
+      background: linear-gradient(145deg, rgba(167,139,250,.075), rgba(255,255,255,.018));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.055), 0 25px 85px rgba(0,0,0,.2), 0 0 35px rgba(167,139,250,.055);
+    }
+    .work-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+    .work-number { color: #7f899c; font-family: var(--mono); font-size: 11px; }
+    .app-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
+      background: linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.018));
+      color: #f4f6fb;
+      box-shadow: 0 0 24px rgba(167,139,250,.07), inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    .app-icon svg { width: 40px; height: 40px; }
+    .work-type { margin-top: 18px; color: var(--accent-2); font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; text-shadow: 0 0 10px rgba(110,231,255,.32); }
+    .work-card h3 {
+      margin: 7px 0 11px;
+      font-size: clamp(1.55rem, 2.35vw, 2rem);
+      line-height: 1.08;
+      letter-spacing: -.045em;
+      text-shadow: 0 0 18px rgba(244,246,251,.10), 0 0 34px rgba(167,139,250,.10);
+    }
+    .work-card p { color: var(--muted); font-size: 14px; line-height: 1.75; max-width: 390px; }
+    .work-bottom { margin-top: 18px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,.08); }
+    .outcome-label { color: #727d90; font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: .06em; }
+    .outcome { margin-top: 5px; color: #dfe4ed; font-size: 14px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .tag { padding: 4px 8px; border: 1px solid rgba(255,255,255,.09); border-radius: 999px; color: #aeb7c7; font-family: var(--mono); font-size: 10px; }
+
+    /* ========================= STACK ========================= */
+    .stack-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 52px; }
+    .stack-card { min-height: 165px; padding: 30px; border: 1px solid rgba(255,255,255,.105); border-radius: 26px; background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.012)); box-shadow: inset 0 1px 0 rgba(255,255,255,.035); }
+    .stack-card h3 { margin: 0 0 10px; font-size: 20px; letter-spacing: -.03em; text-shadow: 0 0 14px rgba(244,246,251,.10); }
+    .stack-card p { margin: 0; color: #9eabc0; line-height: 1.75; font-size: 15px; }
+
+    /* ========================= CONTACT ========================= */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; margin-top: 52px; }
+    .contact-card { padding: 30px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.015)); }
+    .contact-card h3 { margin: 0 0 12px; font-size: 28px; letter-spacing: -.035em; text-shadow: 0 0 16px rgba(244,246,251,.10), 0 0 30px rgba(167,139,250,.16), 0 0 52px rgba(110,231,255,.07); }
+    .contact-card > p { margin: 0 0 26px; color: var(--muted); line-height: 1.8; }
+    .contact-links { display: grid; gap: 10px; }
+    .contact-link { display: flex; align-items: center; gap: 13px; min-height: 58px; padding: 0 17px; border: 1px solid rgba(255,255,255,.08); border-radius: 14px; background: rgba(255,255,255,.025); color: #dfe4ed; font-weight: 650; transition: border-color .2s ease, transform .2s ease; }
+    .contact-link:hover { border-color: var(--line-hover); transform: translateX(3px); }
+    .contact-icon { width: 25px; color: var(--accent-2); display: grid; place-items: center; }
+    .form-grid { display: grid; gap: 17px; }
+    .field { display: grid; gap: 7px; }
+    .field label { color: #aeb7c7; font-size: 13px; font-weight: 650; }
+    .field input, .field textarea { width: 100%; border: 1px solid rgba(255,255,255,.09); border-radius: 13px; outline: 0; background: rgba(0,0,0,.18); color: var(--text); padding: 14px 15px; }
+    .field input:focus, .field textarea:focus { border-color: rgba(167,139,250,.6); box-shadow: 0 0 0 3px rgba(167,139,250,.08); }
+    .field textarea { min-height: 145px; resize: vertical; }
+    .form-note { margin-top: 11px; color: var(--muted-2); font-size: 11px; }
+
+    /* ========================= FOOTER ========================= */
+    .footer { padding: 42px 0 58px; border-top: 1px solid rgba(255,255,255,.065); color: #707a8d; font-family: var(--mono); font-size: 11px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+
+    /* ========================= ENTRY SCREEN ========================= */
+    body.intro-locked { overflow: hidden; }
+    .entry-screen {
+      position: fixed; inset: 0; z-index: 999; display: grid; place-items: center;
+      padding: 32px; background: #05070d; cursor: pointer; overflow: hidden;
+      transition: opacity .9s ease, visibility .9s ease;
+    }
+    .entry-screen::before {
+      content: ""; position: absolute; inset: -25%;
+      background: radial-gradient(circle at 48% 44%, rgba(255,255,255,.07), transparent 24%),
+                  radial-gradient(circle at 76% 72%, rgba(110,231,255,.07), transparent 30%),
+                  radial-gradient(circle at 20% 20%, rgba(167,139,250,.09), transparent 30%);
+      filter: blur(48px); animation: entry-breathe 7s ease-in-out infinite;
+    }
+    .entry-canvas { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; opacity:.72; }
+    .entry-grid { position:absolute; inset:8%; border:1px solid rgba(255,255,255,.035); border-radius:40px; opacity:.55; }
+    .entry-grid::before, .entry-grid::after { content:""; position:absolute; inset:14%; border:1px solid rgba(255,255,255,.025); border-radius:50%; }
+    .entry-grid::after { inset:28%; }
+.entry-content {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 1200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.entry-copy {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.entry-name {
+  margin: 18px 0 18px;
+  font-size: clamp(5rem, 11vw, 11rem);
+  line-height: .82;
+  letter-spacing: -.075em;
+  font-weight: 800;
+}
+
+.entry-name span {
+  display: block;
+  color: transparent;
+  background: linear-gradient(
+    100deg,
+    #f4f6fb 0%,
+    #d9d2ff 43%,
+    #9feeff 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 0 28px rgba(167,139,250,.16));
+}
+
+.entry-domains {
+  color: rgba(255,255,255,.63);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.entry-tools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 760px;
+  margin-top: 24px;
+}
+    .entry-kicker { color:rgba(255,255,255,.44); font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
+    .entry-name { margin:16px 0 12px; font-size:clamp(3.8rem,9vw,8.4rem); line-height:.88; letter-spacing:-.07em; font-weight:800; }
+    .entry-name span { display:block; color:transparent; background:linear-gradient(100deg,#f4f6fb 0%,#d9d2ff 43%,#9feeff 100%); -webkit-background-clip:text; background-clip:text; filter:drop-shadow(0 0 24px rgba(167,139,250,.14)); }
+    .entry-domains { color:rgba(255,255,255,.63); font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; }
+    .entry-tools { display:flex; flex-wrap:wrap; gap:8px; max-width:650px; margin-top:24px; }
+
+    /* Entry actions: keep both CTAs centered at every width. */
+    .entry-actions {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 11px;
+      margin-top: 24px;
+    }
+    .entry-tool {
+      padding:7px 10px; border:1px solid rgba(255,255,255,.08); border-radius:999px;
+      background:rgba(255,255,255,.025); color:rgba(255,255,255,.42); font-family:var(--mono);
+      font-size:9px; letter-spacing:.08em; box-shadow:0 0 22px rgba(167,139,250,.035), inset 0 1px 0 rgba(255,255,255,.035);
+      animation:tool-float 5s ease-in-out infinite;
+    }
+    .entry-tool:nth-child(2n){animation-delay:-1.4s}.entry-tool:nth-child(3n){animation-delay:-2.8s}.entry-tool:nth-child(4n){animation-delay:-3.7s}
+    .entry-hint { margin-top:30px; color:rgba(255,255,255,.34); font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; }
+    .entry-screen.dismiss { opacity:0; visibility:hidden; pointer-events:none; }
+    .entry-screen.dismiss .entry-content { animation:entry-lift 1s cubic-bezier(.76,0,.24,1) forwards; filter:blur(8px); }
+    .entry-screen.dismiss .entry-grid, .entry-screen.dismiss .entry-canvas { animation:entry-grid-lift 1s cubic-bezier(.76,0,.24,1) forwards; }
+    @keyframes entry-lift { from { transform:translateY(0) scale(1); opacity:1; } to { transform:translateY(-112vh) scale(.985); opacity:0; } }
+    @keyframes entry-grid-lift { to { transform:translateY(-45vh) scale(1.08); opacity:0; } }
+    @keyframes entry-breathe { 0%,100%{transform:scale(.96);opacity:.62} 50%{transform:scale(1.04);opacity:1} }
+    @keyframes tool-float { 0%,100%{transform:translateY(0);opacity:.38} 50%{transform:translateY(-5px);opacity:.62} }
+    @keyframes portrait-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+
+    /* ========================= MOTION ========================= */
+    .reveal { opacity: 0; transform: translateY(18px); animation: reveal .75s ease forwards; }
+    .d1 { animation-delay: .05s; } .d2 { animation-delay: .13s; } .d3 { animation-delay: .21s; } .d4 { animation-delay: .29s; }
+    @keyframes reveal { to { opacity: 1; transform: none; } }
+
+    /* ========================= RESPONSIVE ========================= */
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; padding-top: 62px; }
+      .hero-visual { min-height: 480px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .stack-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 680px) {
+      .wrap { width: min(100% - 34px, var(--max)); }
+      .nav-inner { min-height: 68px; }
+      .nav-links { display: none; }
+      .brand { font-size: 12px; }
+      .brand-mark { width: 38px; height: 38px; }
+      .hero { min-height: auto; padding: 56px 0 70px; gap: 25px; }
+      .hero h1 { font-size: clamp(3.5rem, 18vw, 5.2rem); }
+      .hero-lead { font-size: 17px; line-height: 1.65; }
+      .hero-secondary { font-size: 14px; }
+      .hero-visual { min-height: 470px; }
+      .hero-photo-frame { width: min(100%, 430px); }
+      .section { padding: 82px 0; }
+      .section h2 { font-size: clamp(2.7rem, 13vw, 4rem); }
+      .about-grid { gap: 34px; }
+      .status-card { padding: 18px 20px; }
+      .status-row { align-items: flex-start; }
+      .stack-grid, .work-grid { grid-template-columns: 1fr; }
+      .work-card { min-height: 300px; padding: 21px; }
+      .contact-card { padding: 23px; }
+      .footer-inner { flex-direction: column; }
+    }
+
+
+    @media (max-width: 680px) {
+      /* ---------- Mobile centering / overflow fixes ---------- */
+      .wrap {
+        width: calc(100% - 34px);
+        max-width: none;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .entry-screen {
+        padding: 18px;
+      }
+
+      .entry-content {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      .entry-copy {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        align-items: center;
+        text-align: center;
+      }
+
+      .entry-name {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: clamp(4.2rem, 19vw, 6.5rem);
+        line-height: .84;
+        text-align: center;
+      }
+
+      .entry-domains {
+        width: 100%;
+        text-align: center;
+        white-space: normal;
+      }
+
+      .entry-actions {
+        width: 100%;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .entry-actions .btn {
+        min-width: 0;
+      }
+
+      .entry-tools {
+        width: 100%;
+        max-width: 100%;
+        justify-content: center;
+      }
+
+      .entry-hint {
+        margin-top: 22px;
+        text-align: center;
+      }
+
+      .section-heading,
+      .contact-grid {
+        width: 100%;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .contact-card {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .contact-link {
+        min-width: 0;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+
+      .contact-card > p,
+      .section-sub {
+        max-width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition: none !important; }
+    }
+
+  </style>
+</head>
+
+<body class="intro-locked">
+  <!-- ========================= ENTRY SCREEN ========================= -->
+  <div class="entry-screen" id="entryScreen" role="button" tabindex="0" aria-label="Enter portfolio">
+    <canvas id="entryParticles" class="entry-canvas" aria-hidden="true"></canvas>
+    <div class="entry-grid" aria-hidden="true"></div>
+    <div class="entry-content">
+      <div class="entry-copy">
+        <!-- EDIT: Entry screen text -->
+        <div class="entry-name"><span>PRIYANKA</span><span>GOSWAMI</span></div><br>
+        <div class="entry-domains">Data Science · Machine Learning · AI</div><br>
+        <div class="entry-actions">
+  <a
+    class="btn btn-primary"
+    href="mailto:goswamipriyanka645@gmail.com"
+    onclick="event.stopPropagation()"
+  >
+    Hire Me →
+  </a>
+
+  <a
+    class="btn"
+    href="./Priyanka%20Goswami.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    onclick="event.stopPropagation()"
+  >
+    View CV ↗
+  </a>
+</div>
+        <div class="entry-tools" aria-label="Full-stack data science tools">
+       </div>
+        <div class="entry-hint">Tap / click to enter</div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ambient dust only. NO BACKGROUND GRIDLINES. -->
+  <canvas id="ambientParticles" class="ambient-canvas" aria-hidden="true"></canvas>
+
+  <!-- ========================= NAV ========================= -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Back to top">
+        <span class="brand-mark">PG</span>
+        <span class="brand-name">PRIYANKA GOSWAMI</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#stack">Stack</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- EDIT: Single-file portfolio. All sections, styles, and scripts are contained in this file. -->
+  <form name="contact" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="contact">
+    <input name="name"><input name="email"><textarea name="message"></textarea>
+  </form>
+
+  <main id="top">
+<section id="about" class="section">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="section-kicker">01 / About</div>
+        </div>
+          <h2>Building <span style="color:var(--accent)">useful Intelligence.</span></h2>
+
+        <div class="about-grid">
+          <div class="about-copy">
+            <!-- EDIT: About text -->
+            <p>Hey, welcome to Priyanka's little corner of the internet!</p>
+            I am a third-year udergraduate and a Machine Learning Engineering intern, who <strong>builds with data and ships with code</strong>.<br>
+            I’m fascinated by the journey from insight to action — not just what the data tells us, but what we can actually build with it.<br><br>
+            At <strong>FlyRank AI</strong>, I’m gaining hands-on experience across the ML stack: Python, machine learning, APIs, prompt engineering, and modern AI tools; 
+            while learning how to solve real-world problems and build things that hold up beyond the notebook.<br><br>
+            I enjoy taking ideas from <strong>raw data → analysis → models → production</strong>, whether that means dashboards, APIs, predictive systems, or AI workflows.<br>
+            <br>Right now, I’m diving deeper into <strong>full-stack data science, LLMs, scalable ML systems, and AI-powered products</strong>.<br><br>
+            Have a look around. You’ll find a little data, a little AI, and plenty of things I’m building. :)
+            <div class="hero-actions reveal d4">
+          <a class="btn btn-primary" href="#work">Explore my work</a>
+          <!-- EDIT: Keep these real URLs or replace them with your own -->
+          <a class="btn" href="https://github.com/ReposofPriyanka" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i> 
+          <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20">
+    <path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.17c-3.2.7-3.87-1.54-3.87-1.54-.53-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.77.11 3.06.73.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.39-5.25 5.67.41.36.78 1.08.78 2.18v3.23c0 .31.21.68.8.56C20.22 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/>
+  </svg></a>
+          <a class="btn" href="https://www.linkedin.com/in/priyankagoswami-kolkata/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i>
+          <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20">
+    <path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.94v5.67H9.35V8.99h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.26 2.37 4.26 5.46v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM3.56 20.45h3.56V8.99H3.56v11.46zM22.23 0H1.77C.79 0 .01.78.01 1.77v20.46c0 .98.78 1.77 1.76 1.77h20.46c.98 0 1.77-.79 1.77-1.77V1.77C24 .78 23.21 0 22.23 0z"/>
+  </svg></a>
+        </div>
+          </div>
+
+          <aside class="status-card">
+            <!-- EDIT: Profile facts -->
+            <div class="status-row"><span class="status-label">Status</span><span class="status-value"><span class="status-dot"></span>Open to opportunities</span></div>
+            <div class="status-row"><span class="status-label">Now</span><span class="status-value">Machine Learning Engineering Intern<br>FlyRank AI</span></div>            
+            <div class="status-row"><span class="status-label">Study</span><span class="status-value">B.Sc. Data Science (H) · 3rd Year<br>Techno India University</span></div>
+            <div class="status-row"><span class="status-label">Focus</span><span class="status-value">ML · LLMs · AI Workflows</span></div>
+            <div class="status-row"><span class="status-label">Building</span><span class="status-value">Full-Stack Data Science</span></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+<section id="work" class="section">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="section-kicker">02 / Selected work</div>
+          <h2>Technical curiosity, <span style="color:var(--accent)">grounded in real work.</span></h2>
+          <p class="section-sub">A mix of analytics, machine learning, and AI-focused work—built to communicate the problem, the method, and the outcome.</p>
+        </div>
+
+        <div class="work-grid">
+          <!-- EDIT: Project 01 + app icon -->
+          <article class="work-card">
+            <div>
+              <div class="work-top"><span class="work-number">01</span><a class="app-icon" href="YOUR_PROJECT_01_URL" target="_blank" rel="noopener noreferrer" title="Data Intelligence Pipeline">
+<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <path d="M8 6h8M8 18h8M6 6h.01M6 18h.01"
+        stroke="currentColor" stroke-width="2"
+        stroke-linecap="round"/>
+  <path d="M9 6v5a3 3 0 0 0 3 3h3a3 3 0 0 1 3 3v1"
+        stroke="currentColor" stroke-width="1.7"
+        stroke-linecap="round"/>
+</svg>              </a></div>
+              <div class="work-type">Data Engineering · ETL/ELT · Data Analytics</div>
+              <h3>Data Intelligence Pipeline</h3>
+              <p>An automated data pipeline that ingests raw business data from APIs and files, validates and transforms it, then stores analytics-ready data in a warehouse.
+                 Designed reusable SQL models and data-quality checks for reliable downstream analysis.</p>
+            </div>
+            <div class="work-bottom"><div class="outcome-label">Outcome</div><div class="outcome">Messy multi-source data  → A  reliable, analysis-ready data layer</div>
+            <div class="tags"><span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">DuckDB</span><span class="tag">Pandas</span><span class="tag">dbt</span><span class="tag">Airflow</span><span class="tag">Parquet</span><span class="tag">Git</span></div>
+          </div>
+          </article>
+
+          <!-- EDIT: Project 02 + app icon -->
+        <article class="work-card">
+            <div>
+              <div class="work-top"><span class="work-number">02</span><a class="app-icon" href="YOUR_PROJECT_02_URL" target="_blank" rel="noopener noreferrer" title="Intelligent Fraud Detection System">
+<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <path d="M12 3.5 19 6v5.5c0 4.5-2.8 7.5-7 9-4.2-1.5-7-4.5-7-9V6l7-2.5Z"
+        stroke="currentColor" stroke-width="1.6"
+        stroke-linejoin="round"/>
+  <path d="m8.5 12 2.2 2.2 4.8-5"
+        stroke="currentColor" stroke-width="1.8"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>              </a></div>
+              <div class="work-type">Machine Learning · Predictive Analytics · Risk Modeling</div>
+              <h3>Intelligent Fraud Detection System</h3>
+              <p>An end-to-end machine learning system to identify potentially fraudulent transactions using feature engineering, imbalanced-learning techniques, and gradient-boosting models.<br>
+                 Model evaluation and explainability to understand why individual transactions were flagged.</p>
+            </div>
+            <div class="work-bottom"><div class="outcome-label">Outcome</div><div class="outcome">An interpretable fraud-risk scoring system for prioritizing high-risk transactions.</div>
+            <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span><span class="tag">XGBoost</span><span class="tag">SHAP</span><span class="tag">MLflow</span><span class="tag">SQL</span><span class="tag">Power BI</span></div>
+          </div>
+          </article>
+
+          <!-- EDIT: Project 03 + app icon -->
+         <article class="work-card">
+            <div>
+              <div class="work-top"><span class="work-number">03</span><a class="app-icon" href="YOUR_PROJECT_03_URL" target="_blank" rel="noopener noreferrer" title="RAG Research Assistant">
+<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <path d="M9 4a3 3 0 0 0-3 3v1a3 3 0 0 0 0 6v1a3 3 0 0 0 3 3"
+        stroke="currentColor" stroke-width="1.5"
+        stroke-linecap="round"/>
+  <path d="M15 4a3 3 0 0 1 3 3v1a3 3 0 0 1 0 6v1a3 3 0 0 1-3 3"
+        stroke="currentColor" stroke-width="1.5"
+        stroke-linecap="round"/>
+  <path d="M9 8h2M9 12h6M13 16h2"
+        stroke="currentColor" stroke-width="1.5"
+        stroke-linecap="round"/>
+  <circle cx="7" cy="8" r="1" fill="currentColor"/>
+  <circle cx="17" cy="16" r="1" fill="currentColor"/>
+</svg>              </a></div>
+              <div class="work-type">Generative AI · LLM Engineering · RAG</div>
+              <h3>RAG Research Assistant</h3>
+              <p>A retrieval-augmented AI assistant that searches a private knowledge base before generating answers.
+                 Implemented document processing, embeddings, semantic retrieval, citations, and response evaluation.</p>
+            </div>
+            <div class="work-bottom"><div class="outcome-label">Outcome</div><div class="outcome">A grounded research assistant capable of answering questions from custom documents with source references.</div>
+            <div class="tags"><span class="tag">Python</span><span class="tag">LLM APIs</span><span class="tag">Hugging Face</span><span class="tag">Embeddings</span><span class="tag">Vector Database</span><span class="tag">RAG</span><span class="tag">LangChain</span><span class="tag">FastAPI</span></div>
+          </div>
+          </article>
+
+          <!-- EDIT: Project 04 + app icon -->
+          <article class="work-card">
+            <div>
+              <div class="work-top"><span class="work-number">04</span><a class="app-icon" href="YOUR_PROJECT_04_URL" target="_blank" rel="noopener noreferrer" title="Production ML Forecasting Platform">
+<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <path d="M14.5 5.5c2.5-2.5 5.3-2.8 6-2 .7.7.5 3.5-2 6l-5.8 5.8-3.5-3.5 5.3-6.3Z"
+        stroke="currentColor" stroke-width="1.6"
+        stroke-linejoin="round"/>
+  <path d="m9.2 11.8-3.5.7-2 2 4.2.8M12.2 14.8l-.7 3.5-2 2-.8-4.2"
+        stroke="currentColor" stroke-width="1.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="16.7" cy="7.3" r="1.2"
+          stroke="currentColor" stroke-width="1.4"/>
+</svg>              </a></div>
+              <div class="work-type">ML Engineering · MLOps · Model Deployment</div>
+              <h3>Production ML Forecasting Platform</h3>
+              <p>a demand-forecasting service that trains, tracks, and evaluates machine-learning models before exposing predictions through a production-ready API.
+                 Containerized the application and added experiment tracking, automated testing, and model monitoring.</p>
+            </div>
+            <div class="work-bottom"><div class="outcome-label">Outcome</div><div class="outcome">an ML forecasting workflow from a notebook  →  A deployable prediction service</div>
+            <div class="tags"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">XGBoost</span><span class="tag">FastAPI</span><span class="tag">MLflow</span><span class="tag">Docker</span><span class="tag">AWS</span></div>
+          </div>
+          </article>
+
+          <!-- EDIT: Project 05 + app icon -->
+         <article class="work-card">
+            <div>
+              <div class="work-top"><span class="work-number">05</span><a class="app-icon" href="YOUR_PROJECT_05_URL" target="_blank" rel="noopener noreferrer" title="Full-Stack Data Science AI Platform">
+<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <path d="m12 4 8 4-8 4-8-4 8-4Z"
+        stroke="currentColor" stroke-width="1.6"
+        stroke-linejoin="round"/>
+  <path d="m4 12 8 4 8-4M4 16l8 4 8-4"
+        stroke="currentColor" stroke-width="1.6"
+        stroke-linejoin="round"/>
+</svg>              </a></div>
+              <div class="work-type">Full-Stack Data Science · AI Engineering · Production ML</div>
+              <h3>Full-Stack Data Science AI Platform</h3>
+              <p>A complete data-to-decision platform that ingests live data, processes it through an automated pipeline, applies ML models and LLM-powered analysis, and exposes results through an interactive web application.
+                 Designed the system around APIs, model inference, data storage, monitoring, and a user-facing dashboard.</p>
+            </div>
+            <div class="work-bottom"><div class="outcome-label">Outcome</div><div class="outcome">A production-style AI application connecting data engineering, machine learning, GenAI, APIs, and deployment in one system.</div>
+            <div class="tags"><span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span><span class="tag">LLMs</span><span class="tag">RAG</span><span class="tag">FastAPI</span><span class="tag">Streamlit</span><span class="tag">Docker</span><span class="tag">MLflow</span><span class="tag">AWS</span></div>
+          </div>
+          </article>
+
+          <!-- EDIT: Project 06 + app icon -->
+          <article class="work-card">
+            <div>
+              <div class="work-top"><span class="work-number">06</span><a class="app-icon" href="YOUR_PROJECT_06_URL" target="_blank" rel="noopener noreferrer" title="AI-Powered Business Analytics Copilot">
+<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <path d="M4 19.5h16"
+        stroke="currentColor" stroke-width="1.5"
+        stroke-linecap="round"/>
+  <path d="M5 16 9 12l3 3 6-7"
+        stroke="currentColor" stroke-width="1.7"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+  <path d="M18 8h2v2"
+        stroke="currentColor" stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+</svg>              </a></div>
+              <div class="work-type">Data Analytics · BI · AI Applications</div>
+              <h3>AI-Powered Business Analytics Copilot</h3>
+              <p>An interactive analytics application that allows users to explore business data through dashboards and natural-language questions.
+                 Combined traditional BI with LLM-powered analysis to surface trends, anomalies, KPIs, and actionable insights.</p>
+            </div>
+            <div class="work-bottom"><div class="outcome-label">Outcome</div><div class="outcome">Complex business datasets → An interactive analytics experience for technical and non-technical users </div>
+            <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Pandas</span><span class="tag">Streamlit</span><span class="tag">LLM APIs</span><span class="tag">Prompt Engineering</span><span class="tag">RAG</span><span class="tag">Data Visualization</span></div>
+          </div>
+          </article>
+        </div>
+      </div>
+    </section>
+<section id="stack" class="section">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="section-kicker">03 — Stack</div>
+          <h2>Modern tools.<br> <span style="color:var(--accent)"> Minimal ceremony.</span></h2>
+        </div>
+        <div class="stack-grid">
+          <!-- EDIT: Stack cards -->
+          <article class="stack-card"><h3>Programming & Data</h3><p>Python · SQL · R · NumPy · Pandas · DuckDB</p></article>
+          <article class="stack-card"><h3>Data Engineering</h3><p>ETL/ELT · Data Pipelines · Data Warehousing · PostgreSQL · MySQL · BigQuery · Apache Airflow · dbt · Apache Spark · PySpark · Parquet</p></article>
+          <article class="stack-card"><h3>Analytics &amp; Visualizationtion</h3><p>MLflow · Docker · GitHub Actions · CI/CD · Model Serving · Model Monitoring · Data Drift · Experiment Tracking · Model Versioning</p></article>
+          <article class="stack-card"><h3>Machine Learning</h3><p>Scikit-learn · XGBoost · LightGBM · CatBoost · Feature Engineering · Model Evaluation · Time Series · Anomaly Detection · Explainable AI</p></article>
+          <article class="stack-card"><h3>Deep Learning</h3><p>PyTorch · Neural Networks · Transformers · Transfer Learning · Embeddings · Fine-Tuning · LoRA/PEFT</p></article>
+          <article class="stack-card"><h3>Generative AI &amp; LLM Engineering</h3><p>LLMs · Prompt Engineering · RAG · Vector Search · Embeddings · Tool Calling · AI Agents · MCP · LLM Evaluation · Hugging Face · LangChain · LlamaIndex</p></article>
+          <article class="stack-card"><h3>APIs &amp; Data Applications</h3><p>FastAPI · REST APIs · Pydantic · Streamlit · Gradio · React · API Integration</p></article>
+          <article class="stack-card"><h3>MLOps &amp; Production</h3><p>MLflow · Docker · GitHub Actions · CI/CD · Model Serving · Model Monitoring · Data Drift · Experiment Tracking · Model Versioning</p></article>
+          <article class="stack-card"><h3>Cloud &amp; Deployment</h3><p>AWS · S3 · EC2 · Lambda · RDS · ECR · ECS · CloudWatch · IAM · GCP · BigQuery</p></article>
+      </div>
+      </div>
+    </section>
+<section id="contact" class="section">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="section-kicker">04 — Contact</div>
+          <h2>Let’s build something <span style="color:var(--accent)">worth opening twice.</span></h2>
+          <p class="section-sub">Have a project, dataset, internship opportunity, or idea? <br>I’d love to hear from you.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Contact details</h3>
+            <p>Best way to reach me is email or LinkedIn. I’m happy to talk about data, analytics, ML and AI workflows.</p>
+            <div class="contact-links">
+              <!-- EDIT: These are already your real profiles. Replace href only if needed. -->
+              <a class="contact-link" href="mailto:goswamipriyanka645@gmail.com"><span class="contact-icon">✉</span>goswamipriyanka645@gmail.com</a>
+              <a class="contact-link" href="https://www.linkedin.com/in/priyankagoswami-kolkata/" target="_blank" rel="noopener noreferrer"><span class="contact-icon">in</span>linkedin.com/in/priyankagoswami-kolkata</a>
+              <a class="contact-link" href="https://github.com/ReposofPriyanka" target="_blank" rel="noopener noreferrer"><span class="contact-icon">⌘</span>github.com/ReposofPriyanka</a>
+              <!-- Optional PF-04 links: uncomment and replace the URLs when ready. -->
+              <!-- <a class="contact-link" href="YOUR_CV_URL_HERE" target="_blank" rel="noopener noreferrer"><span class="contact-icon">CV</span>View my CV</a> -->
+              <!-- <a class="contact-link" href="YOUR_BOOKING_URL_HERE" target="_blank" rel="noopener noreferrer"><span class="contact-icon">↗</span>Book a conversation</a> -->
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <h3>Send a message</h3>
+            <!-- Static demo form. To make it actually send messages on Netlify, add Netlify Forms attributes. -->
+            <form class="form-grid" name="contact" method="POST" data-netlify="true">
+              <input type="hidden" name="form-name" value="contact">
+              <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" placeholder="Your name" required></div>
+              <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" required></div>
+              <div class="field"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell me about your project..."></textarea></div>
+              <button class="btn btn-primary" type="submit">Send message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span>© 2026 Priyanka Goswami</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+
+    /* =========================================================
+       ENTRY SCREEN + AMBIENT DUST
+       ========================================================= */
+    (() => {
+      const entry = document.getElementById('entryScreen');
+      const entryCanvas = document.getElementById('entryParticles');
+      const entryCtx = entryCanvas?.getContext('2d');
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let particles = [], ew = 0, eh = 0, raf = 0;
+
+      function resizeEntry() {
+        if (!entryCanvas || !entryCtx) return;
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        ew = window.innerWidth; eh = window.innerHeight;
+        entryCanvas.width = ew * dpr; entryCanvas.height = eh * dpr;
+        entryCtx.setTransform(dpr,0,0,dpr,0,0);
+        particles = Array.from({length:85}, () => ({
+          x:Math.random()*ew, y:Math.random()*eh, r:Math.random()*.8+.2,
+          vx:(Math.random()-.5)*.12, vy:(Math.random()-.5)*.12,
+          a:Math.random()*.28+.05, phase:Math.random()*Math.PI*2
+        }));
+      }
+      function drawEntry() {
+        if (!entryCtx) return;
+        entryCtx.clearRect(0,0,ew,eh);
+        for (const p of particles) {
+          if (!reduced) { p.x += p.vx; p.y += p.vy; p.phase += .012; }
+          if (p.x < -8) p.x = ew+8; if (p.x > ew+8) p.x = -8;
+          if (p.y < -8) p.y = eh+8; if (p.y > eh+8) p.y = -8;
+          const alpha = p.a * (.72 + Math.sin(p.phase)*.28);
+          entryCtx.fillStyle = `rgba(190,198,214,${alpha})`;
+          entryCtx.beginPath(); entryCtx.arc(p.x,p.y,p.r,0,Math.PI*2); entryCtx.fill();
+        }
+        if (!reduced) raf = requestAnimationFrame(drawEntry);
+      }
+      function enter() {
+        if (!entry || entry.classList.contains('dismiss')) return;
+        entry.classList.add('dismiss');
+        document.body.classList.remove('intro-locked');
+        setTimeout(() => entry.remove(), 1050);
+      }
+      entry?.addEventListener('click', enter);
+      entry?.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); enter(); } });
+      resizeEntry(); drawEntry();
+      window.addEventListener('resize', resizeEntry);
+      window.addEventListener('beforeunload', () => cancelAnimationFrame(raf));
+    })();
+
+    /* =========================================================
+       AMBIENT DUST
+       ========================================================= */
+    (() => {
+      const canvas = document.getElementById('ambientParticles');
+      const ctx = canvas?.getContext('2d');
+      if (!canvas || !ctx) return;
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let width=0,height=0,frame=0,particles=[];
+      const colors=['167,139,250','110,231,255','196,181,253'];
+      function resize(){const dpr=Math.min(window.devicePixelRatio||1,2);width=window.innerWidth;height=window.innerHeight;canvas.width=width*dpr;canvas.height=height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);particles=Array.from({length:72},()=>({x:Math.random()*width,y:Math.random()*height,vx:(Math.random()-.5)*.10,vy:(Math.random()-.5)*.10,r:Math.random()*1.15+.25,a:Math.random()*.34+.08,phase:Math.random()*Math.PI*2,speed:Math.random()*.8+.5,color:colors[Math.floor(Math.random()*colors.length)]}));}
+      function draw(){ctx.clearRect(0,0,width,height);for(const p of particles){if(!reduced){p.x+=p.vx;p.y+=p.vy;p.phase+=.018*p.speed;}if(p.x<-12)p.x=width+12;if(p.x>width+12)p.x=-12;if(p.y<-12)p.y=height+12;if(p.y>height+12)p.y=-12;const alpha=p.a*(.72+.28*Math.sin(p.phase));ctx.fillStyle=`rgba(${p.color},${alpha})`;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();}if(!reduced)frame=requestAnimationFrame(draw);}
+      resize();draw();window.addEventListener('resize',resize);window.addEventListener('beforeunload',()=>cancelAnimationFrame(frame));
+    })();
+
+    /* =========================================================
+       SECTION LOADER
+       Separate HTML files keep the portfolio editable by section.
+       This requires a normal web server (Netlify/Vercel works).
+       ========================================================= */
+    (() => {
+      const targets = [...document.querySelectorAll('[data-section]')];
+      targets.forEach(async target => {
+        const name = target.dataset.section;
+        try {
+          const response = await fetch(`sections/${name}.html`, {cache:'no-store'});
+          if (!response.ok) throw new Error(`Could not load ${name}`);
+          target.outerHTML = await response.text();
+        } catch (error) {
+          target.innerHTML = `<div class="wrap"><p class="section-load-error">Section failed to load: ${name}. If you opened index.html directly, use Netlify/Vercel or a local server.</p></div>`;
+          console.error(error);
+        }
+      });
+    })();
+
+  </script>
+</body>
+</html>
